@@ -1,8 +1,10 @@
+This is a fork of [anibali/pytorch-stacked-hourglass](https://github.com/anibali/pytorch-stacked-hourglass) which is modified
+to support Python 3.9.
+
 # pytorch-stacked-hourglass
 
 This is a fork of [bearpaw/pytorch-pose](https://github.com/bearpaw/pytorch-pose) which is modified
 for use as a Python package.
-
 
 ## Usage
 

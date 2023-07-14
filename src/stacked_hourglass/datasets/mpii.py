@@ -6,7 +6,7 @@ import random
 import numpy as np
 import torch
 import torch.utils.data as data
-from importlib_resources import open_binary
+from importlib.resources import files
 from scipy.io import loadmat
 from tabulate import tabulate
 
@@ -55,7 +55,7 @@ class Mpii(data.Dataset):
 
         # create train/val split
 
-        with gzip.open(open_binary(stacked_hourglass.res, 'mpii_annotations.json.gz')) as f:
+        with gzip.open(files(stacked_hourglass.res).joinpath('mpii_annotations.json.gz').open('rb')) as f:
             self.anno = json.load(f)
 
         self.train_list, self.valid_list = [], []
@@ -142,7 +142,7 @@ def evaluate_mpii_validation_accuracy(preds):
     threshold = 0.5
     SC_BIAS = 0.6
 
-    dict = loadmat(open_binary(stacked_hourglass.res, 'detections_our_format.mat'))
+    dict = loadmat(files(stacked_hourglass.res).joinpath('detections_our_format.mat').open('rb'))
     jnt_missing = dict['jnt_missing']
     pos_gt_src = dict['pos_gt_src']
     headboxes_src = dict['headboxes_src']
